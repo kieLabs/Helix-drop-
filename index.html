@@ -1,391 +1,371 @@
-<!-- HELIX DROP 3D – GAMERKIE EDITION -->
-
-<div id="helix-drop-container">
-
-  <!-- TOP CONTROL BAR -->
-  <div id="hd-top-bar">
-
-    <!-- LEFT BUTTONS -->
-    <div class="hd-bar-group">
-      <button type="button" class="hd-round-btn"
-        onclick="restartHelixDrop()" title="Restart" aria-label="Restart">
-        ↻
-      </button>
-
-      <button type="button" id="hd-fav-btn"
-        class="hd-round-btn" onclick="toggleHelixFav()"
-        title="Favourite" aria-label="Favourite">
-        ♡
-      </button>
-    </div>
-
-    <!-- GAME BRAND -->
-    <div class="hd-brand">
-      <img
-        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhz4nl9LrCAZfFj0wsnXFcOXnQRCuO1iqpnNiU9jOLGWch_BDEIqyZ0jT1WfVmMMvono7vNhW0Ofc8RaTZUS_WvBrrR2OgIgJASFUiCM-o-lVgijcG-GOm9D410YgWz_j6RBCBrM9w63-kg4oKr56ko8AN_1dasFBacH0ozb7sw9kWGuP830CIftG-Jet0/s320/1000276360.jpg"
-        alt="Helix Drop 3D GamerKie Logo"
-      />
-      <span id="hd-game-title">HELIX DROP 3D</span>
-    </div>
-
-    <!-- RIGHT BUTTONS -->
-    <div class="hd-bar-group">
-      <button type="button" id="hd-fs-btn"
-        class="hd-round-btn" onclick="toggleHelixFullscreen()"
-        title="Fullscreen" aria-label="Fullscreen">
-        <svg id="hd-fs-icon" viewBox="0 0 24 24"
-          width="19" height="19" fill="none"
-          stroke="currentColor" stroke-width="2.4"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
-          <path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
-          <path d="M3 16v3a2 2 0 0 0 2 2h3"/>
-          <path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
-        </svg>
-      </button>
-
-      <button type="button" class="hd-round-btn"
-        onclick="shareHelixDrop()" title="Share" aria-label="Share">
-        <svg viewBox="0 0 24 24" width="19" height="19"
-          fill="none" stroke="currentColor" stroke-width="2.4"
-          stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="18" cy="5" r="3"/>
-          <circle cx="6" cy="12" r="3"/>
-          <circle cx="18" cy="19" r="3"/>
-          <path d="m8.6 10.5 6.8-4"/>
-          <path d="m8.6 13.5 6.8 4"/>
-        </svg>
-      </button>
-    </div>
-
-  </div>
-
-  <!-- HELIX DROP 3D GAME -->
-  <iframe
-    id="helix-drop-iframe"
-    src="YOUR_HELIX_DROP_GITHUB_PAGES_URL"
-    title="Helix Drop 3D - GamerKie Edition"
-    allow="autoplay; fullscreen; gamepad; accelerometer; gyroscope"
-    allowfullscreen>
-  </iframe>
-
-</div>
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#140f35">
+<meta name="description" content="Drop, dodge and smash your way through a colorful 3D helix tower. Collect gems, unlock cute skins and conquer endless levels in Helix Drop by GamerKie.">
+<meta name="robots" content="index,follow">
+<title>Helix Drop 3D — GamerKie</title>
 <style>
-#helix-drop-container {
-  position:relative !important;
-  width:100% !important;
-  max-width:100% !important;
-  margin:0 !important;
-  padding:0 !important;
-  border:0 !important;
-  border-radius:0 !important;
-  box-shadow:none !important;
-  display:flex !important;
-  flex-direction:column !important;
-  overflow:hidden !important;
-  background:transparent !important;
-  font-family:Arial,sans-serif !important;
-  isolation:isolate;
-}
-
-#helix-drop-container * {
-  box-sizing:border-box;
-}
-
-/* TOP BAR */
-#helix-drop-container #hd-top-bar {
-  position:relative !important;
-  z-index:25 !important;
-  width:100% !important;
-  min-height:54px !important;
-  height:54px !important;
-  padding:0 12px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  background:#101528 !important;
-  flex-shrink:0 !important;
-}
-
-#helix-drop-container .hd-bar-group {
-  display:flex !important;
-  align-items:center !important;
-  gap:9px !important;
-}
-
-/* BRAND */
-#helix-drop-container .hd-brand {
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:8px !important;
-  min-width:0 !important;
-}
-
-#helix-drop-container .hd-brand img {
-  width:36px !important;
-  height:36px !important;
-  border-radius:50% !important;
-  object-fit:cover !important;
-  border:1.5px solid #f5b916 !important;
-  flex-shrink:0 !important;
-}
-
-#helix-drop-container .hd-brand span {
-  color:#ffe875 !important;
-  font-size:13px !important;
-  font-weight:900 !important;
-  letter-spacing:.5px !important;
-  white-space:nowrap !important;
-  overflow:hidden !important;
-  text-overflow:ellipsis !important;
-}
-
-/* ROUND BUTTONS */
-#helix-drop-container .hd-round-btn {
-  width:36px !important;
-  height:36px !important;
-  min-width:36px !important;
-  border-radius:50% !important;
-  border:1px solid rgba(255,232,117,.75) !important;
-  background:#1a2240 !important;
-  color:#ffe875 !important;
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  cursor:pointer !important;
-  padding:0 !important;
-  font-size:22px !important;
-  font-weight:bold !important;
-  transition:.15s ease;
-}
-
-#helix-drop-container .hd-round-btn:hover {
-  background:#f5b916 !important;
-  color:#070810 !important;
-  transform:scale(1.06);
-}
-
-#helix-drop-container .hd-round-btn.is-fav {
-  background:#ff2e55 !important;
-  border-color:#ff2e55 !important;
-  color:white !important;
-}
-
-/* GAME FRAME */
-#helix-drop-container #helix-drop-iframe {
-  width:100% !important;
-  height:82vh !important;
-  height:82dvh !important;
-  min-height:520px !important;
-  display:block !important;
-  border:0 !important;
-  outline:0 !important;
-  margin:0 !important;
-  padding:0 !important;
-  background:#111 !important;
-}
-
-/* FULLSCREEN */
-#helix-drop-container.is-fullscreen,
-#helix-drop-container:fullscreen,
-#helix-drop-container:-webkit-full-screen {
-  position:fixed !important;
-  inset:0 !important;
-  width:100vw !important;
-  height:100vh !important;
-  height:100dvh !important;
-  max-width:none !important;
-  max-height:none !important;
-  margin:0 !important;
-  padding:env(safe-area-inset-top,0px)
-          env(safe-area-inset-right,0px)
-          env(safe-area-inset-bottom,0px)
-          env(safe-area-inset-left,0px) !important;
-  z-index:2147483647 !important;
-  background:#070810 !important;
-}
-
-#helix-drop-container.is-fullscreen #helix-drop-iframe,
-#helix-drop-container:fullscreen #helix-drop-iframe,
-#helix-drop-container:-webkit-full-screen #helix-drop-iframe {
-  flex:1 1 auto !important;
-  height:calc(100% - 54px) !important;
-  min-height:0 !important;
-}
-
-/* MOBILE */
-@media(max-width:600px) {
-  #helix-drop-container #helix-drop-iframe {
-    height:78vh !important;
-    height:78dvh !important;
-    min-height:460px !important;
-  }
-
-  #helix-drop-container .hd-brand span {
-    font-size:10px !important;
-    letter-spacing:0 !important;
-  }
-
-  #helix-drop-container .hd-brand img {
-    width:32px !important;
-    height:32px !important;
-  }
-
-  #helix-drop-container .hd-round-btn {
-    width:33px !important;
-    height:33px !important;
-    min-width:33px !important;
-  }
-
-  #helix-drop-container .hd-bar-group {
-    gap:5px !important;
-  }
-
-  #helix-drop-container #hd-top-bar {
-    padding:0 7px !important;
-  }
-}
+:root{--ink:#fff;--muted:#c7c5e5;--glass:rgba(25,18,66,.72);--line:rgba(255,255,255,.16);--aqua:#56efff;--pink:#ff55c8;--gold:#ffe16b;--shadow:0 18px 50px rgba(8,5,35,.34)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#17113d;color:var(--ink);font-family:Inter,ui-rounded,system-ui,-apple-system,"Segoe UI",sans-serif;touch-action:none}button{font:inherit;color:inherit;border:0;cursor:pointer}#game{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 10%,#ffbc83 0%,#ef7ac8 45%,#6246b8 100%)}#stage{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none}#vignette{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,8,39,.28),transparent 22%,transparent 70%,rgba(10,7,35,.42));}
+#hud{position:absolute;inset:0;pointer-events:none;padding:calc(env(safe-area-inset-top,0px) + 12px) 14px calc(env(safe-area-inset-bottom,0px) + 14px);display:none;flex-direction:column;justify-content:space-between}
+.hud-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.brand-mini{font-size:10px;letter-spacing:.22em;font-weight:1000;color:#fff;text-shadow:0 2px 8px #3a1e8a}.level-box{margin-top:5px;display:flex;align-items:center;gap:9px}.level-number{font-size:27px;line-height:1;font-weight:1000;text-shadow:0 3px 0 rgba(22,13,73,.3)}.level-tag{font-size:10px;font-weight:900;letter-spacing:.14em;color:#fff8c8}.progress-wrap{width:126px;height:7px;border-radius:20px;background:rgba(255,255,255,.28);overflow:hidden;margin-top:6px;box-shadow:inset 0 1px 3px rgba(0,0,0,.2)}#progress{height:100%;width:0;background:linear-gradient(90deg,#50f3ff,#fff18a);border-radius:20px;transition:width .12s linear}
+.hud-right{display:flex;align-items:center;gap:7px;pointer-events:auto}.gem-pill,.icon-btn{background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(12px)}.gem-pill{height:38px;padding:0 12px;border-radius:24px;display:flex;align-items:center;gap:7px;font-weight:900;font-size:13px}.gem-icon{color:#7df8ff;font-size:17px;text-shadow:0 0 12px #26dfff}.icon-btn{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:16px}.icon-btn:active,.action:active{transform:scale(.96)}
+#hud-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}.hint{font-size:11px;line-height:1.35;font-weight:800;letter-spacing:.04em;padding:9px 12px;border-radius:14px;background:rgba(23,16,66,.52);border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(8px);color:#fff}.combo{min-width:104px;text-align:right;text-shadow:0 2px 8px #27145c}.combo strong{display:block;font-size:22px;line-height:1;font-weight:1000;color:#fff18b}.combo span{font-size:9px;letter-spacing:.18em;font-weight:1000;color:#fff}
+#brand-stamp{position:absolute;right:15px;bottom:calc(env(safe-area-inset-bottom,0px) + 13px);font-size:9px;font-weight:1000;letter-spacing:.2em;color:rgba(255,255,255,.62);pointer-events:none;display:none}
+.screen{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:22px;pointer-events:auto;background:linear-gradient(180deg,rgba(15,9,48,.12),rgba(15,9,48,.30));}
+.panel{width:min(100%,410px);max-height:min(90dvh,760px);overflow:auto;border-radius:28px;padding:25px 22px 22px;background:linear-gradient(145deg,rgba(54,35,120,.91),rgba(19,15,62,.94));border:1px solid rgba(255,255,255,.2);box-shadow:0 28px 90px rgba(13,6,48,.48),inset 0 1px 0 rgba(255,255,255,.16);backdrop-filter:blur(18px);text-align:center;scrollbar-width:thin;scrollbar-color:#9279ea transparent}.eyebrow{font-size:10px;letter-spacing:.28em;font-weight:1000;color:#87f6ff}.logo-title{font-size:clamp(36px,10vw,56px);line-height:.94;margin:10px 0 7px;font-weight:1000;letter-spacing:-.06em;text-transform:uppercase;text-shadow:0 4px 0 #6b2fa7,0 9px 23px rgba(0,0,0,.35)}.logo-title em{font-style:normal;color:#ffe56e}.subtitle{margin:0 auto 18px;max-width:280px;color:#d7d1ff;font-size:12px;line-height:1.5;font-weight:700}.mascot-wrap{height:112px;display:flex;align-items:center;justify-content:center;position:relative;margin:2px auto 12px}.mascot{width:78px;height:78px;border-radius:28px;background:linear-gradient(145deg,#9dfcff,#4775f8);border:5px solid rgba(255,255,255,.86);box-shadow:0 0 0 9px rgba(107,231,255,.1),0 16px 28px rgba(0,0,0,.24);position:relative;transform:rotate(-7deg);animation:float 2.8s ease-in-out infinite}.mascot:before{content:"";position:absolute;width:44px;height:24px;border-radius:12px;background:#22224e;left:12px;top:22px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.18)}.mascot:after{content:"●  ●";white-space:pre;position:absolute;left:16px;top:24px;font-size:14px;letter-spacing:3px;color:#ff8ccf;text-shadow:0 0 8px #ff66cd}.mascot-ear{position:absolute;width:12px;height:25px;border-radius:9px;background:#ff8acb;top:18px;left:-7px;transform:rotate(-24deg)}.mascot-ear.right{left:auto;right:-7px;transform:rotate(24deg)}.orbit{position:absolute;width:124px;height:32px;border:2px solid rgba(113,246,255,.5);border-radius:50%;transform:rotate(-18deg)}@keyframes float{50%{transform:translateY(-8px) rotate(1deg)}}
+.actions{display:grid;gap:10px}.action{min-height:49px;padding:13px 18px;border-radius:16px;font-weight:1000;letter-spacing:.06em;text-transform:uppercase;font-size:12px;transition:transform .12s,filter .12s;box-shadow:0 6px 0 rgba(0,0,0,.22);}.action:active{box-shadow:0 2px 0 rgba(0,0,0,.22);filter:brightness(1.06)}.primary{color:#28144b;background:linear-gradient(100deg,#fff18b,#ffb66f)}.secondary{background:linear-gradient(100deg,#43e9ed,#668dff);color:#10194c}.tertiary{background:linear-gradient(100deg,#f86dce,#9765ff);color:white}.ghost{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);box-shadow:none;color:#fff}.small-action{min-height:40px;padding:10px 13px;font-size:10px;border-radius:13px}.menu-foot{margin:16px 0 0;color:rgba(255,255,255,.56);font-size:9px;font-weight:900;letter-spacing:.2em}
+#modal{display:none;position:absolute;inset:0;align-items:center;justify-content:center;padding:18px;background:rgba(8,5,32,.67);backdrop-filter:blur(10px);pointer-events:auto}.modal-card{width:min(100%,420px);max-height:85dvh;overflow:auto;border-radius:24px;padding:20px;background:linear-gradient(150deg,#3b287d,#191342);border:1px solid rgba(255,255,255,.18);box-shadow:var(--shadow)}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.modal-head h2{margin:0;font-size:20px;font-weight:1000;letter-spacing:-.04em}.close-btn{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.12);font-size:17px}.skin-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.skin-card{padding:13px 10px;border-radius:17px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);text-align:center}.skin-card.selected{border-color:#69f3ff;box-shadow:inset 0 0 0 1px #69f3ff;background:rgba(64,213,255,.1)}.skin-face{height:58px;display:grid;place-items:center;font-size:37px;filter:drop-shadow(0 8px 5px rgba(0,0,0,.25))}.skin-name{font-size:12px;font-weight:1000;margin:4px 0}.skin-price{font-size:10px;color:#b9faff;font-weight:900;margin-bottom:8px}.skin-card button{width:100%;padding:8px;border-radius:10px;background:linear-gradient(90deg,#67eaf7,#8e8bff);color:#17204d;font-size:9px;font-weight:1000;text-transform:uppercase}.skin-card button:disabled{opacity:.45;filter:grayscale(1)}.modal-note{font-size:10px;color:#c9c4e9;line-height:1.5;margin:13px 2px 0}
+#toast{position:absolute;left:50%;top:27%;transform:translate(-50%,-8px);opacity:0;pointer-events:none;border-radius:999px;padding:10px 17px;background:rgba(22,14,63,.84);border:1px solid rgba(255,255,255,.2);font-size:11px;font-weight:1000;letter-spacing:.12em;white-space:nowrap;transition:opacity .2s,transform .2s;text-shadow:0 2px 5px #000}#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:700px){#hud{padding-left:26px;padding-right:26px}.hint{font-size:12px}.progress-wrap{width:160px}.panel{padding:30px}.hud-top{max-width:760px;width:100%;margin:0 auto}.hud-bottom{max-width:760px;width:100%;margin:0 auto}}
+@media(max-height:600px){.panel{padding:16px 18px}.mascot-wrap{height:75px;margin:0 auto 6px}.mascot{width:58px;height:58px;border-radius:20px}.mascot:before{left:7px;top:15px;width:36px;height:20px}.mascot:after{left:10px;top:17px;font-size:12px}.subtitle{margin-bottom:10px}.action{min-height:42px;padding:10px}.menu-foot{margin-top:10px}}
 </style>
-
+</head>
+<body>
+<div id="game">
+  <canvas id="stage" aria-label="Helix Drop 3D game. Drag left or right to rotate the tower."></canvas>
+  <div id="vignette"></div>
+  <div id="hud">
+    <div class="hud-top">
+      <div><div class="brand-mini">GAMERKIE ORIGINAL</div><div class="level-box"><div class="level-number" id="levelNum">01</div><div><div class="level-tag">LEVEL</div><div class="progress-wrap"><div id="progress"></div></div></div></div></div>
+      <div class="hud-right"><div class="gem-pill"><span class="gem-icon">◆</span><span id="gemCount">60</span></div><button class="icon-btn" id="soundBtn" aria-label="Toggle sound">♫</button><button class="icon-btn" id="pauseBtn" aria-label="Pause game">Ⅱ</button></div>
+    </div>
+    <div id="hud-bottom"><div class="hint">↔ DRAG TO ROTATE<br><span style="opacity:.72">Find the gaps. Avoid dark tiles.</span></div><div class="combo"><strong id="comboNum">0×</strong><span id="comboLabel">COMBO SMASH</span></div></div>
+  </div>
+  <div id="toast"></div>
+  <div id="brand-stamp">GAMERKIE • HELIX DROP 3D</div>
+  <section class="screen" id="homeScreen">
+    <div class="panel">
+      <div class="eyebrow">GAMERKIE PRESENTS</div><div class="logo-title">HELIX <em>DROP</em></div><div class="eyebrow" style="font-size:9px;letter-spacing:.2em">3D TOWER ADVENTURE</div>
+      <p class="subtitle">Drop through the helix. Dodge danger. Smash the stack. Collect gems and unlock your favorite hero.</p>
+      <div class="mascot-wrap"><div class="orbit"></div><div class="mascot"><i class="mascot-ear"></i><i class="mascot-ear right"></i></div></div>
+      <div class="actions"><button class="action primary" id="playBtn">▶ PLAY NOW</button><button class="action secondary" id="dailyBtn">✦ DAILY CHALLENGE</button><button class="action tertiary" id="skinsBtn">★ UNLOCKABLE SKINS</button></div>
+      <div class="menu-foot">SWIPE • DROP • SMASH • REPEAT</div>
+    </div>
+  </section>
+  <section class="screen" id="pauseScreen" style="display:none">
+    <div class="panel"><div class="eyebrow">TAKE A BREATHER</div><div class="logo-title" style="font-size:42px">PAUSED</div><p class="subtitle">Your tower is waiting. Ready for another drop?</p><div class="actions"><button class="action primary" id="resumeBtn">▶ RESUME</button><button class="action secondary" id="restartBtn">↻ RESTART LEVEL</button><button class="action ghost" id="pauseHomeBtn">⌂ MAIN MENU</button></div></div>
+  </section>
+  <section class="screen" id="resultScreen" style="display:none">
+    <div class="panel"><div class="eyebrow" id="resultEyebrow">LEVEL COMPLETE</div><div class="logo-title" id="resultTitle" style="font-size:43px">NICE <em>DROP!</em></div><p class="subtitle" id="resultText">You smashed the stack and collected rewards.</p><div class="actions"><button class="action primary" id="continueBtn">▶ CONTINUE</button><button class="action ghost" id="resultHomeBtn">⌂ MAIN MENU</button></div></div>
+  </section>
+  <div id="modal"><div class="modal-card"><div class="modal-head"><h2 id="modalTitle">CHOOSE YOUR HERO</h2><button class="close-btn" id="closeModal">×</button></div><div id="modalContent"></div></div></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" crossorigin="anonymous"></script>
 <script>
-(function(){
-
-  var container = document.getElementById("helix-drop-container");
-  var iframe = document.getElementById("helix-drop-iframe");
-  var favBtn = document.getElementById("hd-fav-btn");
-  var fsIcon = document.getElementById("hd-fs-icon");
-
-  var favKey = "gamerkie_helix_drop_favourite";
-
-  var expandSvg =
-    '<path d="M8 3H5a2 2 0 0 0-2 2v3"/>' +
-    '<path d="M21 8V5a2 2 0 0 0-2-2h-3"/>' +
-    '<path d="M3 16v3a2 2 0 0 0 2 2h3"/>' +
-    '<path d="M16 21h3a2 2 0 0 0 2-2v-3"/>';
-
-  var exitSvg =
-    '<path d="M8 3v3a2 2 0 0 1-2 2H3"/>' +
-    '<path d="M21 8h-3a2 2 0 0 1-2-2V3"/>' +
-    '<path d="M3 16h3a2 2 0 0 1 2 2v3"/>' +
-    '<path d="M16 21v-3a2 2 0 0 1 2-2h3"/>';
-
-  /* FAVOURITE */
-  try {
-    if(localStorage.getItem(favKey)==="true") {
-      favBtn.classList.add("is-fav");
-      favBtn.textContent="♥";
-    }
-  } catch(e) {}
-
-  window.toggleHelixFav = function() {
-    var active = favBtn.classList.toggle("is-fav");
-    favBtn.textContent = active ? "♥" : "♡";
-    try {
-      localStorage.setItem(favKey,active ? "true" : "false");
-    } catch(e) {}
-  };
-
-  /* RESTART */
-  window.restartHelixDrop = function() {
-    if(!iframe) return;
-    var url=iframe.src;
-    iframe.src="about:blank";
-    setTimeout(function(){
-      iframe.src=url;
-    },100);
-  };
-
-  /* SHARE */
-  window.shareHelixDrop = function() {
-    var data = {
-      title:"HELIX DROP 3D - GamerKie Edition",
-      text:"Play Helix Drop 3D free online on GamerKie!",
-      url:window.location.href
-    };
-
-    if(navigator.share) {
-      navigator.share(data).catch(function(){});
-    } else if(navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.href)
-        .then(function(){
-          alert("Game link copied!");
-        });
-    } else {
-      prompt("Copy game link:",window.location.href);
-    }
-  };
-
-  /* FULLSCREEN */
-  function syncIcon() {
-    var active =
-      !!(document.fullscreenElement ||
-         document.webkitFullscreenElement ||
-         container.classList.contains("is-fullscreen"));
-
-    fsIcon.innerHTML = active ? exitSvg : expandSvg;
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const TWO_PI = Math.PI * 2;
+const SAVE_KEY = 'gamerkie_helix_drop_save_v1';
+const skins = [
+  {id:'robot',name:'Byte Bot',face:'🤖',price:0,color:0x75e9ff,accent:0xff6bd6},
+  {id:'fox',name:'Fire Fox',face:'🦊',price:80,color:0xff9b56,accent:0xffdf6b},
+  {id:'panda',name:'Panda Pop',face:'🐼',price:120,color:0xf5f5ff,accent:0x383858},
+  {id:'dino',name:'Tiny Dino',face:'🦖',price:160,color:0x73f0a0,accent:0x92baff},
+  {id:'astro',name:'Astro Pal',face:'👾',price:220,color:0xa68bff,accent:0x63f6ff}
+];
+const palettes = [
+  {bg:0xffbe78,mid:0xf77fbd,low:0x584bd0,base:0x43c6ee,alt:0x2d91e8},
+  {bg:0x83d8ff,mid:0x8f90ff,low:0x432e9d,base:0xff61bf,alt:0xe63e9e},
+  {bg:0xffd66f,mid:0xff9c74,low:0xa64aa7,base:0xffa52e,alt:0xffd43d},
+  {bg:0x9df3d0,mid:0x53c9d9,low:0x314f9d,base:0x50e7c0,alt:0x31afcf}
+];
+function loadSave(){
+  const defaults={gems:60,highest:1,selected:'robot',unlocked:['robot'],sound:true,dailyDone:'',totalWins:0};
+  try{const v=JSON.parse(localStorage.getItem(SAVE_KEY)||'{}');return {...defaults,...v,unlocked:Array.isArray(v.unlocked)?v.unlocked:['robot']};}catch(_){return defaults;}
+}
+let save=loadSave();
+function saveNow(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(save));}catch(_){}}
+function normalizeAngle(a){return ((a%TWO_PI)+TWO_PI)%TWO_PI;}
+function getSectorIndex(angle,segments){return Math.min(segments-1,Math.floor(normalizeAngle(angle)/TWO_PI*segments));}
+function resolveTile(tile,combo,fireball=false){
+  if(tile==='gap')return 'drop';
+  if(fireball || combo>=3)return 'smash';
+  return tile==='hazard'?'crash':'land';
+}
+function applyImpact(state,tile){
+  const outcome=resolveTile(tile,state.combo,state.fireball);
+  const next={...state};
+  if(outcome==='drop'){
+    next.layer+=1;next.combo+=1;next.fireball=next.fireball||next.combo>=3;
+    next.score+=1;next.mode='falling';
+  }else if(outcome==='smash'){
+    next.layer+=1;next.combo=0;next.fireball=false;next.score+=1;next.mode='falling';
+  }else if(outcome==='crash'){
+    next.mode='dead';
+  }else{
+    next.combo=0;next.fireball=false;next.mode='bouncing';
+    next.velocity=Number.isFinite(next.bounceVelocity)?next.bounceVelocity:4.8;
   }
+  return {outcome,state:next};
+}
+window.__helixLogic={normalizeAngle,getSectorIndex,resolveTile,applyImpact};
+function seeded(seed){let t=seed>>>0;return ()=>{t+=0x6D2B79F5;let x=t;x=Math.imul(x^x>>>15,x|1);x^=x+Math.imul(x^x>>>7,x|61);return ((x^x>>>14)>>>0)/4294967296;};}
+function seedFrom(s){let h=2166136261;for(let i=0;i<s.length;i++)h=Math.imul(h^s.charCodeAt(i),16777619);return h>>>0;}
 
-  window.toggleHelixFullscreen = function() {
+let renderer,scene,camera,clock,world,ringPivot,player,playerShell,playerFace,playerAura,gemMeshes=[];
+let layers=[],particles=[],debris=[],gameState='home',isDaily=false,level=1,passed=0,combo=0,fireball=false,fallVelocity=0,playerY=0,nextLayer=0,dragging=false,lastPointerX=0,toastTimer=0,animationFrame=0,smashFlash=0,lastFireTrail=0;
+let activePalette=palettes[0],dailyKey='';
+const SEGMENTS=12,INNER_R=.62,OUTER_R=2.16,PLAYER_R=1.52,PLATFORM_THICK=.24,LEVEL_GAP=1.28,LEVEL_COUNT=15;
 
-    if(container.classList.contains("is-fullscreen")) {
-
-      container.classList.remove("is-fullscreen");
-      document.body.style.overflow="";
-
-      if(document.fullscreenElement ||
-         document.webkitFullscreenElement) {
-
-        var exit =
-          document.exitFullscreen ||
-          document.webkitExitFullscreen;
-
-        if(exit) {
-          try {
-            var result=exit.call(document);
-            if(result && result.catch) result.catch(function(){});
-          } catch(e) {}
-        }
+function makeRingSector(inner,outer,a0,a1,thickness){
+  const verts=[],indices=[],steps=3,half=thickness/2;
+  const point=(r,a,y)=>[Math.cos(a)*r,y,Math.sin(a)*r];
+  const addTri=(a,b,c)=>{const n=verts.length/3;verts.push(...a,...b,...c);indices.push(n,n+1,n+2);};
+  for(let j=0;j<steps;j++){
+    const p0=a0+(a1-a0)*j/steps,p1=a0+(a1-a0)*(j+1)/steps;
+    const i0=point(inner,p0,half),i1=point(inner,p1,half),o0=point(outer,p0,half),o1=point(outer,p1,half);
+    addTri(i0,o1,o0);addTri(i0,i1,o1);
+    const bi0=point(inner,p0,-half),bi1=point(inner,p1,-half),bo0=point(outer,p0,-half),bo1=point(outer,p1,-half);
+    addTri(bi0,bo0,bo1);addTri(bi0,bo1,bi1);
+    addTri(o0,o1,bo1);addTri(o0,bo1,bo0);
+    addTri(i0,bi1,i1);addTri(i0,bi0,bi1);
+  }
+  const a=point(inner,a0,-half),b=point(outer,a0,-half),c=point(outer,a0,half),d=point(inner,a0,half);addTri(a,c,b);addTri(a,d,c);
+  const e=point(inner,a1,-half),f=point(outer,a1,-half),g=point(outer,a1,half),h=point(inner,a1,half);addTri(e,f,g);addTri(e,g,h);
+  const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));geo.setIndex(indices);geo.computeVertexNormals();return geo;
+}
+function basicMat(color,roughness=.62,metalness=.04){return new THREE.MeshStandardMaterial({color,roughness,metalness,flatShading:false});}
+function addLights(){
+  scene.add(new THREE.HemisphereLight(0xffffff,0x51417e,2.05));
+  const key=new THREE.DirectionalLight(0xffffff,2.3);key.position.set(6,10,7);scene.add(key);
+  const rim=new THREE.DirectionalLight(0x8ceeff,1.25);rim.position.set(-7,3,-5);scene.add(rim);
+}
+function makeAvatar(){
+  player=new THREE.Group();playerShell=new THREE.Group();player.add(playerShell);
+  const skin=skins.find(s=>s.id===save.selected)||skins[0];
+  const body=new THREE.Mesh(new THREE.SphereGeometry(.29,24,18),basicMat(skin.color,.35,.12));body.position.y=.02;playerShell.add(body);
+  const head=new THREE.Mesh(new THREE.SphereGeometry(.34,24,18),basicMat(skin.color,.3,.08));head.position.y=.28;playerShell.add(head);
+  const facePlate=new THREE.Mesh(new THREE.BoxGeometry(.43,.23,.09),basicMat(0x24264c,.3,.1));facePlate.position.set(0,.29,.29);playerShell.add(facePlate);
+  const eyeMat=new THREE.MeshStandardMaterial({color:skin.accent,emissive:skin.accent,emissiveIntensity:1.35,roughness:.2});
+  for(const x of [-.105,.105]){const eye=new THREE.Mesh(new THREE.SphereGeometry(.047,12,10),eyeMat);eye.position.set(x,.31,.345);playerShell.add(eye);}
+  const antenna=new THREE.Mesh(new THREE.CylinderGeometry(.018,.025,.13,8),basicMat(0xe6e6ff,.4));antenna.position.set(0,.68,0);playerShell.add(antenna);
+  const tip=new THREE.Mesh(new THREE.SphereGeometry(.045,12,10),basicMat(skin.accent,.25,.2));tip.position.set(0,.76,0);playerShell.add(tip);
+  const earMat=basicMat(skin.accent,.35,.08);
+  for(const x of [-.34,.34]){const ear=new THREE.Mesh(new THREE.ConeGeometry(.09,.2,8),earMat);ear.position.set(x,.48,0);ear.rotation.z=x<0?.28:-.28;playerShell.add(ear);}
+  const footMat=basicMat(0x35305e,.65);
+  for(const x of [-.15,.15]){const foot=new THREE.Mesh(new THREE.SphereGeometry(.105,12,9),footMat);foot.scale.set(1,.6,1);foot.position.set(x,-.22,.025);playerShell.add(foot);}
+  if(skin.id==='panda'){
+    for(const x of [-.13,.13]){const patch=new THREE.Mesh(new THREE.SphereGeometry(.105,14,10),basicMat(0x27263c,.5));patch.scale.set(1,1.08,.35);patch.position.set(x,.31,.352);playerShell.add(patch);const pupil=new THREE.Mesh(new THREE.SphereGeometry(.035,10,8),basicMat(0xffffff,.25));pupil.position.set(x,.31,.397);playerShell.add(pupil);}
+    for(const x of [-.24,.24]){const ear=new THREE.Mesh(new THREE.SphereGeometry(.12,12,9),basicMat(0x28263d,.55));ear.position.set(x,.56,-.02);playerShell.add(ear);}
+  }else if(skin.id==='fox'){
+    const muzzle=new THREE.Mesh(new THREE.SphereGeometry(.13,14,10),basicMat(0xfff0d8,.5));muzzle.scale.set(1,.7,.65);muzzle.position.set(0,.19,.36);playerShell.add(muzzle);
+    for(const x of [-.23,.23]){const innerEar=new THREE.Mesh(new THREE.ConeGeometry(.045,.13,8),basicMat(0xffe2d2,.45));innerEar.position.set(x,.52,.02);innerEar.rotation.z=x<0?.28:-.28;playerShell.add(innerEar);}
+  }else if(skin.id==='dino'){
+    for(let i=0;i<4;i++){const spike=new THREE.Mesh(new THREE.ConeGeometry(.075,.17,7),basicMat(0x2cbf79,.45));spike.position.set(0,.5-i*.055,-.22+i*.12);spike.rotation.x=-Math.PI/2;playerShell.add(spike);}
+  }else if(skin.id==='astro'){
+    for(const x of [-.25,.25]){const horn=new THREE.Mesh(new THREE.ConeGeometry(.07,.18,8),basicMat(0x74f6ff,.3,.12));horn.position.set(x,.57,0);horn.rotation.z=x<0?.22:-.22;playerShell.add(horn);}
+  }
+  const glow=new THREE.Mesh(new THREE.TorusGeometry(.36,.035,8,32),new THREE.MeshBasicMaterial({color:skin.accent,transparent:true,opacity:.55}));glow.rotation.x=Math.PI/2;glow.position.y=-.27;playerShell.add(glow);
+  playerAura=new THREE.Mesh(new THREE.TorusGeometry(.52,.075,10,42),new THREE.MeshBasicMaterial({color:0xff7a24,emissive:0xff4b12,emissiveIntensity:1.3,transparent:true,opacity:.92}));playerAura.rotation.x=Math.PI/2;playerAura.position.y=-.19;playerAura.visible=false;playerShell.add(playerAura);
+  player.position.set(0,0,PLAYER_R);scene.add(player);
+}
+function makeBackdrop(){
+  const starGeo=new THREE.BufferGeometry(),positions=[];for(let i=0;i<190;i++){const r=5+Math.random()*13,a=Math.random()*TWO_PI,y=-13+Math.random()*22;positions.push(Math.cos(a)*r,y,Math.sin(a)*r);}
+  starGeo.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));const stars=new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xffffff,size:.055,transparent:true,opacity:.72}));scene.add(stars);
+}
+function buildLayer(data,index,palette,rng){
+  const group=new THREE.Group();group.position.y=data.y;group.userData.layerIndex=index;ringPivot.add(group);
+  const base=(index%3===0?palette.base:index%3===1?palette.alt:palette.base);
+  for(let i=0;i<SEGMENTS;i++){
+    if(data.gaps.has(i))continue;
+    const a0=i/SEGMENTS*TWO_PI+.012,a1=(i+1)/SEGMENTS*TWO_PI-.012;
+    const hazard=data.hazards.has(i);
+    const color=hazard?0x171522:(i%2?base:palette.alt);
+    const mat=basicMat(color,hazard?.36:.58,hazard?.18:.03);if(hazard){mat.emissive.setHex(0x170b25);mat.emissiveIntensity=.45;}
+    const mesh=new THREE.Mesh(makeRingSector(INNER_R,OUTER_R,a0,a1,PLATFORM_THICK),mat);mesh.castShadow=true;mesh.receiveShadow=true;mesh.userData={sector:i,hazard,breakable:true,a0,a1};group.add(mesh);
+    const trim=new THREE.Mesh(new THREE.BoxGeometry(OUTER_R-INNER_R-.02,.035,.045),new THREE.MeshBasicMaterial({color:hazard?0x5a193c:0xffffff,transparent:true,opacity:hazard?.65:.22}));
+    const mid=(a0+a1)/2,rr=(INNER_R+OUTER_R)/2;trim.position.set(Math.cos(mid)*rr,.135,Math.sin(mid)*rr);trim.rotation.y=-mid;group.add(trim);
+  }
+  const sideBand=new THREE.Mesh(new THREE.TorusGeometry(OUTER_R-.035,.035,6,SEGMENTS*4),new THREE.MeshBasicMaterial({color:palette.low,transparent:true,opacity:.5}));sideBand.rotation.x=Math.PI/2;sideBand.position.y=-.12;group.add(sideBand);
+  return {group,y:data.y,gaps:data.gaps,hazards:data.hazards,broken:false,cleared:false};
+}
+function addGem(layer,index,angle){
+  const geo=new THREE.OctahedronGeometry(.14,0),mat=new THREE.MeshStandardMaterial({color:0x75f7ff,emissive:0x19aee5,emissiveIntensity:.8,metalness:.35,roughness:.18});
+  const gem=new THREE.Mesh(geo,mat);gem.position.set(Math.cos(angle)*PLAYER_R,layer.y+.39,Math.sin(angle)*PLAYER_R);gem.rotation.z=.25;ringPivot.add(gem);gem.userData={layer:index,angle,got:false};gemMeshes.push(gem);
+}
+function newTower(requestedLevel,daily){
+  if(!renderer)return;
+  clearTower();isDaily=daily;level=requestedLevel;passed=0;combo=0;fireball=false;nextLayer=0;fallVelocity=-.85;smashFlash=0;lastFireTrail=0;
+  const today=new Date();dailyKey=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
+  const rng=seeded(seedFrom(daily?'daily-'+dailyKey:'level-'+requestedLevel));
+  activePalette=palettes[(daily?today.getDate():requestedLevel-1)%palettes.length];
+  scene.background=new THREE.Color(activePalette.bg);scene.fog=new THREE.Fog(activePalette.bg,12,30);
+  ringPivot=new THREE.Group();scene.add(ringPivot);
+  const pillar=new THREE.Mesh(new THREE.CylinderGeometry(.52,.68,LEVEL_COUNT*LEVEL_GAP+5,32),new THREE.MeshStandardMaterial({color:0xd9a7d7,roughness:.72,metalness:.02}));pillar.position.y=1-(LEVEL_COUNT*LEVEL_GAP+5)/2;ringPivot.add(pillar);
+  const stripe=new THREE.Mesh(new THREE.CylinderGeometry(.545,.7,.06,32),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.22}));stripe.position.copy(pillar.position);stripe.position.y+=2.1;ringPivot.add(stripe);
+  layers=[];gemMeshes=[];
+  for(let i=0;i<LEVEL_COUNT;i++){
+    const gaps=new Set();let start=Math.floor(rng()*SEGMENTS);if(i===0 && [2,3,4].includes(start))start=(start+5)%SEGMENTS;const width=(i>7&&rng()>.55)||(requestedLevel>=4&&rng()>.72)?3:2;for(let j=0;j<width;j++)gaps.add((start+j)%SEGMENTS);
+    const hazards=new Set();const hazardCount=Math.min(4,1+Math.floor((requestedLevel-1)/4)+(i>5&&rng()>.65?1:0)+(daily?1:0));let tries=0;while(hazards.size<hazardCount&&tries++<60){const h=Math.floor(rng()*SEGMENTS);if(!gaps.has(h)&&!(i===0&&h===3))hazards.add(h);}
+    const d={y:2-i*LEVEL_GAP,gaps,hazards};const layer=buildLayer(d,i,activePalette,rng);layers.push(layer);
+    if(i>0&&rng()>.28){let sector=Math.floor(rng()*SEGMENTS);while(gaps.has(sector))sector=(sector+1)%SEGMENTS;addGem(layer,i,(sector+.5)/SEGMENTS*TWO_PI);}
+  }
+  const base=new THREE.Mesh(new THREE.CylinderGeometry(OUTER_R*.78,OUTER_R*.86,.2,48),basicMat(activePalette.low,.65));base.position.y=layers[layers.length-1].y-1.5;ringPivot.add(base);
+  playerY=layers[0].y+1.08;player.position.set(0,playerY,PLAYER_R);playerShell.rotation.set(0,0,0);player.visible=true;if(playerAura)playerAura.visible=false;
+  ringPivot.rotation.y=0;camera.position.set(7.7,playerY+7.4,10.4);camera.lookAt(0,playerY-.35,0);
+  $('levelNum').textContent=String(level).padStart(2,'0');$('gemCount').textContent=save.gems;$('progress').style.width='0%';$('comboNum').textContent='0×';
+  gameState='playing';$('homeScreen').style.display='none';$('pauseScreen').style.display='none';$('resultScreen').style.display='none';$('hud').style.display='flex';$('brand-stamp').style.display='block';toast(daily?'DAILY DROP!':'LEVEL '+level,1100);
+}
+function clearTower(){for(const piece of debris){scene.remove(piece.mesh);if(piece.mesh.material&&piece.mesh.material.dispose)piece.mesh.material.dispose();}debris=[];if(ringPivot){scene.remove(ringPivot);ringPivot.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){if(Array.isArray(o.material))o.material.forEach(m=>m.dispose());else o.material.dispose();}});ringPivot=null;}layers=[];gemMeshes=[];}
+function currentSector(){const local=normalizeAngle(Math.PI/2+ringPivot.rotation.y);return getSectorIndex(local,SEGMENTS);}
+function currentTile(layer){const idx=currentSector();if(layer.gaps.has(idx))return 'gap';if(layer.hazards.has(idx))return 'hazard';return 'safe';}
+function updateHud(){const p=Math.min(100,Math.round(passed/LEVEL_COUNT*100));$('progress').style.width=p+'%';$('comboNum').textContent=combo+'×';$('comboLabel').textContent=fireball?'FIREBALL READY':'COMBO SMASH';$('gemCount').textContent=save.gems;}
+function toast(msg,duration=900){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),duration);}
+function playTone(freq=440,dur=.08,type='sine',volume=.045){if(!save.sound)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!window._gkAudio)window._gkAudio=new AC();const ctx=window._gkAudio;if(ctx.state==='suspended')ctx.resume();const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.setValueAtTime(freq,ctx.currentTime);g.gain.setValueAtTime(volume,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+dur);}catch(_){}}
+function burst(at,color=0xffffff,count=16){for(let i=0;i<count;i++){const mesh=new THREE.Mesh(new THREE.SphereGeometry(.035+Math.random()*.035,7,6),new THREE.MeshBasicMaterial({color,transparent:true,opacity:1}));mesh.position.copy(at);scene.add(mesh);const v=new THREE.Vector3((Math.random()-.5)*3,Math.random()*3,(Math.random()-.5)*3);particles.push({mesh,v,life:.55+Math.random()*.45});}}
+function shatterLayer(layer){
+  if(!layer||layer.broken)return;
+  layer.broken=true;layer.cleared=true;
+  const towerAngle=ringPivot.rotation.y;
+  const fragments=layer.group.children.filter(o=>o.isMesh&&o.userData&&o.userData.breakable);
+  for(const original of fragments){
+    const data=original.userData;
+    for(let radialPart=0;radialPart<2;radialPart++){
+      const r0=INNER_R+(OUTER_R-INNER_R)*radialPart/2;
+      const r1=INNER_R+(OUTER_R-INNER_R)*(radialPart+1)/2;
+      for(let angularPart=0;angularPart<2;angularPart++){
+        const a0=data.a0+(data.a1-data.a0)*angularPart/2;
+        const a1=data.a0+(data.a1-data.a0)*(angularPart+1)/2;
+        const geo=makeRingSector(r0,r1,a0,a1,PLATFORM_THICK);
+        const mid=(a0+a1)/2,radialMid=(r0+r1)/2;
+        const cx=Math.cos(mid)*radialMid,cz=Math.sin(mid)*radialMid;
+        geo.translate(-cx,0,-cz);
+        const material=original.material.clone();material.transparent=true;
+        const piece=new THREE.Mesh(geo,material);
+        const wx=Math.cos(towerAngle)*cx+Math.sin(towerAngle)*cz;
+        const wz=-Math.sin(towerAngle)*cx+Math.cos(towerAngle)*cz;
+        piece.position.set(wx,layer.y,wz);piece.rotation.y=towerAngle;
+        piece.castShadow=true;piece.receiveShadow=true;scene.add(piece);
+        const radial=new THREE.Vector3(wx,0,wz).normalize();
+        const tangent=new THREE.Vector3(-radial.z,0,radial.x);
+        const velocity=radial.multiplyScalar(1.5+Math.random()*2.2)
+          .add(tangent.multiplyScalar((Math.random()-.5)*2.2))
+          .add(new THREE.Vector3((Math.random()-.5)*.7,-1.8-Math.random()*2.4,(Math.random()-.5)*.7));
+        debris.push({mesh:piece,velocity,spin:new THREE.Vector3((Math.random()-.5)*10,(Math.random()-.5)*10,(Math.random()-.5)*10),life:1.4+Math.random()*.9});
       }
-
-      syncIcon();
-      return;
     }
-
-    container.classList.add("is-fullscreen");
-    document.body.style.overflow="hidden";
-    syncIcon();
-
-    var request =
-      container.requestFullscreen ||
-      container.webkitRequestFullscreen;
-
-    if(request) {
-      try {
-        var result=request.call(container);
-        if(result && result.catch) {
-          result.catch(function(){});
-        }
-      } catch(e) {}
+  }
+  layer.group.visible=false;
+  burst(new THREE.Vector3(0,layer.y,0),0xffdf72,30);
+}
+function updateDebris(dt){
+  for(let i=debris.length-1;i>=0;i--){
+    const piece=debris[i];piece.life-=dt;
+    piece.velocity.y-=9.8*dt;
+    piece.mesh.position.addScaledVector(piece.velocity,dt);
+    piece.mesh.rotation.x+=piece.spin.x*dt;piece.mesh.rotation.y+=piece.spin.y*dt;piece.mesh.rotation.z+=piece.spin.z*dt;
+    const fade=Math.min(1,Math.max(0,piece.life/.35));
+    if(piece.mesh.material){const mats=Array.isArray(piece.mesh.material)?piece.mesh.material:[piece.mesh.material];for(const m of mats){m.transparent=true;m.opacity=fade;}}
+    if(piece.life<=0||piece.mesh.position.y < camera.position.y-24){scene.remove(piece.mesh);if(piece.mesh.material){const mats=Array.isArray(piece.mesh.material)?piece.mesh.material:[piece.mesh.material];mats.forEach(m=>m.dispose());}debris.splice(i,1);}
+  }
+}
+function collectGems(){for(const gem of gemMeshes){if(gem.userData.got)continue;const worldPos=gem.getWorldPosition(new THREE.Vector3());const dx=worldPos.x-player.position.x,dz=worldPos.z-player.position.z,dy=worldPos.y-playerY;if(dx*dx+dz*dz<.32&&Math.abs(dy)<.55){gem.userData.got=true;ringPivot.remove(gem);save.gems+=5;saveNow();updateHud();burst(worldPos,0x85f8ff,12);playTone(880,.12,'sine',.04);toast('+5 GEMS',700);}}}
+function hitTile(layer,index){
+  const tile=currentTile(layer);
+  const impact=applyImpact({layer:index,combo,fireball,score:passed,mode:'falling',velocity:fallVelocity,bounceVelocity:4.8},tile);
+  const outcome=impact.outcome;
+  combo=impact.state.combo;fireball=impact.state.fireball;passed=impact.state.score;nextLayer=impact.state.layer;
+  if(outcome==='drop'){
+    layer.cleared=true;
+    if(combo===2)toast('KEEP FALLING!',650);
+    if(combo===3){toast('FIREBALL READY!',900);playTone(610,.18,'sawtooth',.04);}
+    return 'drop';
+  }
+  if(outcome==='smash'){
+    shatterLayer(layer);smashFlash=.25;
+    playTone(170+Math.min(8,combo+3)*35,.14,'square',.05);
+    burst(new THREE.Vector3(0,layer.y,PLAYER_R),0xff8a32,22);
+    toast('COMBO SMASH!',850);
+    return 'smash';
+  }
+  if(outcome==='crash'){
+    endGame(false);return 'crash';
+  }
+  nextLayer=index;
+  playerY=layer.y+PLATFORM_THICK*.5+.34;
+  fallVelocity=impact.state.velocity;
+  playerShell.scale.set(.88,1.13,.88);
+  setTimeout(()=>{if(playerShell)playerShell.scale.set(1,1,1);},130);
+  burst(new THREE.Vector3(0,layer.y+.1,PLAYER_R),0xffffff,9);
+  playTone(520,.07,'sine',.025);toast('BOUNCE!',420);
+  return 'land';
+}
+function endGame(won){if(gameState!=='playing')return;gameState=won?'won':'over';$('hud').style.display='none';$('brand-stamp').style.display='none';$('resultScreen').style.display='flex';
+  if(won){const reward=isDaily?40:25;save.gems+=reward;save.highest=Math.max(save.highest,level+1);save.totalWins++;if(isDaily)save.dailyDone=dailyKey;saveNow();$('resultEyebrow').textContent=isDaily?'DAILY CHALLENGE CLEAR':'LEVEL '+level+' COMPLETE';$('resultTitle').innerHTML='NICE <em>DROP!</em>';$('resultText').textContent=`Tower smashed! You earned ${reward} gems. Your next tower is waiting.`;$('continueBtn').textContent=isDaily?'BACK TO MENU':'▶ NEXT LEVEL';playTone(740,.15,'sine',.045);setTimeout(()=>playTone(990,.2,'sine',.04),130);
+  }else{$('resultEyebrow').textContent='WATCH YOUR STEP';$('resultTitle').innerHTML='OH <em>NO!</em>';$('resultText').textContent='You hit a danger tile. Rotate carefully and try the drop again.';$('continueBtn').textContent='↻ TRY AGAIN';playTone(120,.35,'sawtooth',.045);}
+}
+function animate(){
+  animationFrame=requestAnimationFrame(animate);
+  const dt=Math.min(clock.getDelta(),.035),elapsed=clock.elapsedTime;
+  if(gameState==='playing'&&ringPivot&&player){
+    const previousY=playerY;
+    fallVelocity-=12.8*dt;
+    playerY+=fallVelocity*dt;
+    let safety=0;
+    while(nextLayer<layers.length&&safety++<LEVEL_COUNT){
+      const layer=layers[nextLayer];
+      const contactY=layer.y+PLATFORM_THICK*.5+.34;
+      if(fallVelocity<=0&&previousY>contactY&&playerY<=contactY){
+        const result=hitTile(layer,nextLayer);
+        if(result==='land'||result==='crash')break;
+        continue;
+      }
+      break;
     }
-  };
-
-  document.addEventListener("fullscreenchange",function(){
-    if(!document.fullscreenElement) {
-      container.classList.remove("is-fullscreen");
-      document.body.style.overflow="";
+    const bottomY=layers[layers.length-1].y-1.8;
+    if(gameState==='playing'&&playerY<bottomY)endGame(true);
+    player.position.y=playerY;
+    player.rotation.y=Math.sin(elapsed*2)*.12;
+    playerShell.rotation.z=Math.sin(elapsed*4)*.035+(fallVelocity<0?Math.sin(elapsed*19)*.035:0);
+    if(playerAura){playerAura.visible=fireball;playerAura.rotation.z=elapsed*3.4;playerAura.scale.setScalar(1+.08*Math.sin(elapsed*15));}
+    if(fireball&&fallVelocity<-.8&&elapsed-lastFireTrail>.075){
+      lastFireTrail=elapsed;
+      const flame=new THREE.Mesh(new THREE.SphereGeometry(.045+Math.random()*.025,7,6),new THREE.MeshBasicMaterial({color:Math.random()>.5?0xff6a20:0xffdc55,transparent:true,opacity:.95}));
+      flame.position.set((Math.random()-.5)*.22,playerY-.34,PLAYER_R+(Math.random()-.5)*.2);scene.add(flame);
+      particles.push({mesh:flame,v:new THREE.Vector3((Math.random()-.5)*.5,-1.3-Math.random(),(Math.random()-.5)*.5),life:.28+Math.random()*.12});
     }
-    syncIcon();
-  });
-
-  document.addEventListener("webkitfullscreenchange",function(){
-    if(!document.webkitFullscreenElement) {
-      container.classList.remove("is-fullscreen");
-      document.body.style.overflow="";
-    }
-    syncIcon();
-  });
-
+    const targetY=playerY-.3;
+    camera.position.y+=(targetY+7.5-camera.position.y)*Math.min(1,dt*2.6);
+    camera.lookAt(0,targetY-.15,0);
+    collectGems();updateHud();
+  }
+  updateDebris(dt);
+  if(smashFlash>0)smashFlash=Math.max(0,smashFlash-dt);
+  for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.life-=dt;p.mesh.position.addScaledVector(p.v,dt);p.v.y-=5*dt;p.mesh.material.opacity=Math.max(0,p.life);if(p.life<=0){scene.remove(p.mesh);p.mesh.geometry.dispose();p.mesh.material.dispose();particles.splice(i,1);}}
+  if(gameState==='home'&&player){player.position.y=2.35+Math.sin(elapsed*1.3)*.12;player.rotation.y=elapsed*.25;camera.lookAt(0,.25,0);}
+  gemMeshes.forEach(g=>{if(!g.userData.got){g.rotation.y+=dt*1.6;g.rotation.x+=dt*.4;}});
+  renderer.render(scene,camera);
+}
+function init3D(){
+  if(!window.THREE){$('homeScreen').querySelector('.subtitle').textContent='The 3D engine could not load. Please check your internet connection and reload the game.';return;}
+  const canvas=$('stage');renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.setSize(window.innerWidth,window.innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;
+  scene=new THREE.Scene();scene.background=new THREE.Color(palettes[0].bg);scene.fog=new THREE.Fog(palettes[0].bg,12,30);camera=new THREE.PerspectiveCamera(36,window.innerWidth/window.innerHeight,.1,100);camera.position.set(7.7,9.7,10.4);camera.lookAt(0,0,0);clock=new THREE.Clock();addLights();makeBackdrop();makeAvatar();
+  const ambientRing=new THREE.Mesh(new THREE.TorusGeometry(2.5,.012,5,90),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.17}));ambientRing.rotation.x=Math.PI/2;ambientRing.position.y=-.5;scene.add(ambientRing);
+  newTower(1,false);gameState='home';$('homeScreen').style.display='flex';$('hud').style.display='none';$('brand-stamp').style.display='none';animate();
+  window.addEventListener('resize',onResize,{passive:true});canvas.addEventListener('pointerdown',onPointerDown);window.addEventListener('pointermove',onPointerMove,{passive:false});window.addEventListener('pointerup',onPointerUp);window.addEventListener('keydown',onKey);
+}
+function onResize(){if(!renderer)return;renderer.setSize(window.innerWidth,window.innerHeight);camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();}
+function onPointerDown(e){if(gameState!=='playing')return;dragging=true;lastPointerX=e.clientX;try{$('stage').setPointerCapture(e.pointerId);}catch(_){} }
+function onPointerMove(e){if(!dragging||gameState!=='playing'||!ringPivot)return;e.preventDefault();const dx=e.clientX-lastPointerX;lastPointerX=e.clientX;ringPivot.rotation.y+=dx*.009;}
+function onPointerUp(){dragging=false;}
+function onKey(e){if(gameState!=='playing')return;if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a'){ringPivot.rotation.y-=.18;}if(e.key==='ArrowRight'||e.key.toLowerCase()==='d'){ringPivot.rotation.y+=.18;}if(e.key==='Escape'||e.key===' '){e.preventDefault();pauseGame();}}
+function startGame(daily=false){if(daily&&save.dailyDone===dailyKey){toast('DAILY CHALLENGE ALREADY CLEARED',1300);return;}newTower(daily?1:save.highest,daily);}
+function pauseGame(){if(gameState!=='playing')return;gameState='paused';$('pauseScreen').style.display='flex';$('hud').style.display='none';}
+function resumeGame(){if(gameState!=='paused')return;gameState='playing';$('pauseScreen').style.display='none';$('hud').style.display='flex';}
+function goHome(){gameState='home';$('homeScreen').style.display='flex';$('pauseScreen').style.display='none';$('resultScreen').style.display='none';$('hud').style.display='none';$('brand-stamp').style.display='none';if(ringPivot)ringPivot.rotation.y=0;fireball=false;if(playerAura)playerAura.visible=false;player.position.set(0,2.35,PLAYER_R);camera.position.set(7.7,9.7,10.4);camera.lookAt(0,0,0);}
+function showSkins(){const content=$('modalContent');$('modalTitle').textContent='CHOOSE YOUR HERO';content.innerHTML='<div class="skin-list">'+skins.map(s=>{const owned=save.unlocked.includes(s.id),selected=save.selected===s.id;return `<div class="skin-card ${selected?'selected':''}"><div class="skin-face">${s.face}</div><div class="skin-name">${s.name}</div><div class="skin-price">${owned?'UNLOCKED':`◆ ${s.price} GEMS`}</div><button data-skin="${s.id}" ${!owned&&save.gems<s.price?'disabled':''}>${selected?'EQUIPPED':owned?'EQUIP':'UNLOCK'}</button></div>`;}).join('')+'</div><p class="modal-note">Collect gems during your drops and win levels to unlock every hero. Your selected hero is saved on this device.</p>';
+  content.querySelectorAll('[data-skin]').forEach(btn=>btn.addEventListener('click',()=>{const skin=skins.find(s=>s.id===btn.dataset.skin);if(!skin)return;if(!save.unlocked.includes(skin.id)){if(save.gems<skin.price)return;save.gems-=skin.price;save.unlocked.push(skin.id);}save.selected=skin.id;saveNow();if(player){scene.remove(player);makeAvatar();}showSkins();$('gemCount').textContent=save.gems;playTone(660,.08); }));$('modal').style.display='flex';}
+function closeModal(){$('modal').style.display='none';}
+function continueResult(){if(gameState==='over'){newTower(level,isDaily);return;}if(isDaily){goHome();return;}newTower(Math.max(level+1,save.highest),false);}
+$('playBtn').addEventListener('click',()=>startGame(false));$('dailyBtn').addEventListener('click',()=>{if(save.dailyDone===dailyKey){toast('DAILY CHALLENGE ALREADY CLEARED',1300);return;}startGame(true);});$('skinsBtn').addEventListener('click',showSkins);$('closeModal').addEventListener('click',closeModal);$('modal').addEventListener('click',e=>{if(e.target===$('modal'))closeModal();});$('pauseBtn').addEventListener('click',pauseGame);$('soundBtn').addEventListener('click',()=>{save.sound=!save.sound;saveNow();$('soundBtn').textContent=save.sound?'♫':'♪';if(save.sound)playTone(620,.08);});$('resumeBtn').addEventListener('click',resumeGame);$('restartBtn').addEventListener('click',()=>newTower(level,isDaily));$('pauseHomeBtn').addEventListener('click',goHome);$('continueBtn').addEventListener('click',continueResult);$('resultHomeBtn').addEventListener('click',goHome);
+$('soundBtn').textContent=save.sound?'♫':'♪';
+try{init3D();}catch(err){console.error('Helix Drop init failed:',err);$('homeScreen').querySelector('.subtitle').textContent='Could not start the 3D game on this device. Reload the page or try a browser with WebGL enabled.';}
 })();
 </script>
+</body>
+</html>
